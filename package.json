@@ -1,6 +1,6 @@
 {
   "homepage": "http://UCITA-FYP.github.io/Translation-and-OCR",
-  "name": "react-image-to-text",
+  "name": "translation-and-ocr",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
