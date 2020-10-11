@@ -16,53 +16,22 @@ function App() {
 
   const convertImageToText = async () => {
     setLoading(true);
-    const result = await Tesseract.recognize(imageUrl, [
-      "ara",
-      "afr",
-      "ben",
-      "bul",
-      "eng",
-      "cat",
-      // "chi_sim",
-      // "chi_tra",
-      // "hrv",
-      // "ces",
-      // "nld",
-      // "est",
-      // "fin",
-      // "ell",
-      // "heb",
-      // "hin",
-      // "hun",
-      // "isl",
-      // "ita",
-      // "ita_old",
-      // "kan",
-      // "kor",
-      // "lav",
-      // "lit",
-      // "msa",
-      // "mlt",
-      // "nor",
-      // "pol",
-      // "por",
-      // "ron",
-      // "srp",
-      // "spa",
-      // "spa_old",
-      // "swa",
-      // "swe",
-      // "dan",
-      // "deu",
-      // "fra",
-      // "jpn",
-      // "rus",
-      // "syr",
-      // "tha",
-      // "tur",
-      // "ukr",
-      // "vie",
-    ], );
+    console.log(`Converting image to text...`);
+    const result = await Tesseract.recognize(
+      imageUrl,
+      [document.getElementById("OCR-Selected-language").value]
+      //    [
+      //   "ara",
+      //   "eng",
+      //   "heb",
+      //   "hin",
+      //   "ell",
+      //   "rus",
+      //   "srp",
+      //   "chi_sim",
+      //   "chi_tra",
+      // ]
+    );
     setText(result.data.text);
     setLoading(false);
   };
@@ -70,6 +39,7 @@ function App() {
   const uploadFile = async (e) => {
     try {
       setLoading(true);
+      console.log(`Uploading the File...`);
       const formData = new FormData();
       formData.append("image", e.target.files[0]);
       const config = {
@@ -95,7 +65,6 @@ function App() {
       convertImageToText();
     }
   }, [imageUrl]);
-  console.log(`${process.env.REACT_APP_API_KEY}`);
 
   function translation() {
     const axios = require("axios").default;
@@ -140,10 +109,67 @@ function App() {
     });
   }
   return (
-    <div class="App">
+    <div className="App">
       <h1>UCITA OCR</h1>
 
-      <div class="container">
+      <div className="container">
+        <div>
+          <select id="OCR-Selected-language" className="dropdown">
+            <option value="afr"> Afrikaans </option>
+            <option value="ara"> Arabic </option>
+            <option value="ben"> Bengali </option>
+            <option value="bul"> Bulgarian </option>
+            <option value="cat"> Catalan </option>
+            <option value="ces"> Czech </option>
+            <option value="chi_sim"> Chinese </option>
+            <option value="chi_tra"> Traditional Chinese </option>
+            <option value="dan"> Danish </option>
+            <option value="deu"> German </option>
+            <option value="ell"> Greek </option>
+            <option value="eng" selected="selected">
+              English
+            </option>
+            <option value="enm">English (Old)</option>
+            <option value="fin"> Finnish </option>
+            <option value="fra"> French </option>
+            <option value="frm"> French (Old) </option>
+            <option value="grc"> Ancient Greek </option>
+            <option value="heb"> Hebrew </option>
+            <option value="hin"> Hindi </option>
+            <option value="hrv"> Croatian </option>
+            <option value="hun"> Hungarian </option>
+            <option value="ind"> Indonesian </option>
+            <option value="isl"> Icelandic </option>
+            <option value="ita"> Italian </option>
+            <option value="ita_old"> Italian (Old) </option>
+            <option value="jpn"> Japanese </option>
+            <option value="kan"> Kannada </option>
+            <option value="kor"> Korean </option>
+            <option value="lit"> Lithuanian </option>
+            <option value="msa"> Malay </option>
+            <option value="nld"> Dutch </option>
+            <option value="nor"> Norwegian </option>
+            <option value="pol"> Polish </option>
+            <option value="por"> Portuguese </option>
+            <option value="ron"> Romanian </option>
+            <option value="rus"> Russian </option>
+            <option value="slk"> Slovakian </option>
+            <option value="slv"> Slovenian </option>
+            <option value="spa"> Spanish </option>
+            <option value="spa_old"> Old Spanish </option>
+            <option value="sqi"> Albanian </option>
+            <option value="srp"> Serbian (Latin) </option>
+            <option value="swa"> Swahili </option>
+            <option value="swe"> Swedish </option>
+            <option value="tam"> Tamil </option>
+            <option value="tel"> Telugu </option>
+            <option value="tgl"> Tagalog </option>
+            <option value="tha"> Thai </option>
+            <option value="tur"> Turkish </option>
+            <option value="ukr"> Ukrainian </option>
+            <option value="vie"> Vietnamese </option>
+          </select>
+        </div>
         {loading && <div className="loader"></div>}
         {text == null ? (
           <ImageWrapper loading={loading} uploadFile={uploadFile} />
@@ -152,14 +178,17 @@ function App() {
         )}
         <br></br>
         <h1>UCITA TRANSLATION</h1>
-        <div class="border">
+        <div className="border">
           <div>
-            <label for="select-language">
+            <br></br>
+            <label htmlFor="select-language">
               <strong>Translate from:</strong>
-              {"  "}
+              <br></br>
             </label>
-            <select id="from-language" class="dropdown">
-              <option value="">Detect Language</option>
+            <select id="from-language" className="dropdown">
+              <option value="" selected="selected">
+                Detect Language
+              </option>
               <option value="af"> Afrikaans </option>
               <option value="ar">Arabic</option>
               <option value="bn"> Bengali </option>
@@ -204,13 +233,15 @@ function App() {
               <option value="vi">Vietnamese</option>
             </select>
             <br></br>
-            <label for="select-language">
+            <label htmlFor="select-language">
               <strong>Translate to:</strong>
-              {"  "}
+              <br></br>
             </label>
-            <select id="select-language" class="dropdown">
+            <select id="select-language" className="dropdown">
               <option value="af"> Afrikaans </option>
-              <option value="ar">Arabic</option>
+              <option value="ar" selected="selected">
+                Arabic
+              </option>
               <option value="bn"> Bengali </option>
               <option value="bg"> Bulgarian </option>
               <option value="ca">Catalan</option>
@@ -257,7 +288,7 @@ function App() {
           <button
             onClick={translation}
             type="submit"
-            class="btn btn-primary mb-2"
+            className="btn btn-primary mb-2"
             id="translate"
           >
             <h3>Translate text</h3>
@@ -275,13 +306,13 @@ function App() {
           </div>
           <br></br>
           <div id="translator-text-response">
-            <label for="translation-result">
+            <label htmlFor="translation-result">
               <strong>Translated text:</strong>
               <br></br>
             </label>
-            <textarea class="textarea1" id="translation-result"></textarea>
-            <br></br>
           </div>
+          <textarea className="text-wrapper" id="translation-result"></textarea>
+          <br></br>
         </div>
       </div>
     </div>

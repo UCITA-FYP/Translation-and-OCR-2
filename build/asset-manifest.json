@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/UCITA-FYP/Translation-and-OCR.git/static/css/main.8e4e0ae0.chunk.css",
+    "main.js": "/UCITA-FYP/Translation-and-OCR.git/static/js/main.425751fe.chunk.js",
+    "main.js.map": "/UCITA-FYP/Translation-and-OCR.git/static/js/main.425751fe.chunk.js.map",
+    "runtime-main.js": "/UCITA-FYP/Translation-and-OCR.git/static/js/runtime-main.928e92e5.js",
+    "runtime-main.js.map": "/UCITA-FYP/Translation-and-OCR.git/static/js/runtime-main.928e92e5.js.map",
+    "static/js/2.9bcc1e8b.chunk.js": "/UCITA-FYP/Translation-and-OCR.git/static/js/2.9bcc1e8b.chunk.js",
+    "static/js/2.9bcc1e8b.chunk.js.map": "/UCITA-FYP/Translation-and-OCR.git/static/js/2.9bcc1e8b.chunk.js.map",
+    "index.html": "/UCITA-FYP/Translation-and-OCR.git/index.html",
+    "precache-manifest.bc35e93061facba19671e4e0387ba226.js": "/UCITA-FYP/Translation-and-OCR.git/precache-manifest.bc35e93061facba19671e4e0387ba226.js",
+    "service-worker.js": "/UCITA-FYP/Translation-and-OCR.git/service-worker.js",
+    "static/css/main.8e4e0ae0.chunk.css.map": "/UCITA-FYP/Translation-and-OCR.git/static/css/main.8e4e0ae0.chunk.css.map",
+    "static/js/2.9bcc1e8b.chunk.js.LICENSE.txt": "/UCITA-FYP/Translation-and-OCR.git/static/js/2.9bcc1e8b.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.928e92e5.js",
+    "static/js/2.9bcc1e8b.chunk.js",
+    "static/css/main.8e4e0ae0.chunk.css",
+    "static/js/main.425751fe.chunk.js"
+  ]
+}
